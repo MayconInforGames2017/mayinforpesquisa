@@ -12,30 +12,29 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_registro")
-public class Registro implements Serializable {
-	private static final long serialVersionUID = 1L;
-
+@Table(name = "tb_record")
+public class Record implements Serializable {
+	private static final long serialVersionUID = 1L;	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	private String nome;
-	private Integer idade;
-	private Instant momento;
+	private String name;
+	private Integer age;
+	private Instant moment;
 
 	@ManyToOne
-	@JoinColumn(name = "id_game")
+	@JoinColumn(name = "game_id")
 	private Game game;
 
-	public Registro() {}
+	public Record() {}
 
-	public Registro(Long id, String nome, Integer idade, Instant momento, Game game) {
+	public Record(Long id, String name, Integer age, Instant moment, Game game) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.idade = idade;
-		this.momento = momento;
+		this.name = name;
+		this.age = age;
+		this.moment = moment;
 		this.game = game;
 	}
 
@@ -47,28 +46,28 @@ public class Registro implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Integer getIdade() {
-		return idade;
+	public Integer getAge() {
+		return age;
 	}
 
-	public void setIdade(Integer idade) {
-		this.idade = idade;
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 
-	public Instant getMomento() {
-		return momento;
+	public Instant getMoment() {
+		return moment;
 	}
 
-	public void setMomento(Instant momento) {
-		this.momento = momento;
+	public void setMoment(Instant moment) {
+		this.moment = moment;
 	}
 
 	public Game getGame() {
@@ -95,7 +94,7 @@ public class Registro implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Registro other = (Registro) obj;
+		Record other = (Record) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

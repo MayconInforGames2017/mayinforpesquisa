@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.mayinfor.mayinforpesquisa.entities.enums.Plataforma;
+import com.mayinfor.mayinforpesquisa.entities.enums.Platform;
 
 @Entity
 @Table(name = "tb_game")
@@ -23,24 +23,24 @@ public class Game implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String titulo;
-	private Plataforma plataforma;
+	private String title;
+	private Platform platform;
 
 	@ManyToOne
-	@JoinColumn(name = "id_genero")
-	private Genero genero;
-	
+	@JoinColumn(name = "genre_id")
+	private Genre genre;
+
 	@OneToMany(mappedBy = "game")
-	private List<Registro> registros = new ArrayList<>();
+	private List<Record> records = new ArrayList<>();
 
 	public Game() {}
 
-	public Game(Long id, String titulo, Plataforma plataforma, Genero genero) {
+	public Game(Long id, String title, Platform platform, Genre genre) {
 		super();
 		this.id = id;
-		this.titulo = titulo;
-		this.plataforma = plataforma;
-		this.genero = genero;
+		this.title = title;
+		this.platform = platform;
+		this.genre = genre;
 	}
 
 	public Long getId() {
@@ -51,32 +51,32 @@ public class Game implements Serializable {
 		this.id = id;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public Plataforma getPlataforma() {
-		return plataforma;
+	public Platform getPlatform() {
+		return platform;
 	}
 
-	public void setPlataforma(Plataforma plataforma) {
-		this.plataforma = plataforma;
+	public void setPlatform(Platform platform) {
+		this.platform = platform;
 	}
 
-	public Genero getGenero() {
-		return genero;
+	public Genre getGenre() {
+		return genre;
 	}
 
-	public void setGenero(Genero genero) {
-		this.genero = genero;
+	public void setGenre(Genre genre) {
+		this.genre = genre;
 	}
 	
-	public List<Registro> getRegistros() {
-		return registros;
+	public List<Record> getRecords() {
+		return records;
 	}
 
 	@Override

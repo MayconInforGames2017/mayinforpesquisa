@@ -12,25 +12,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_genero")
-public class Genero implements Serializable {
+@Table(name = "tb_genre")
+public class Genre implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	private String nome;
-	
-	@OneToMany(mappedBy = "genero")
+	private String name;
+
+	@OneToMany(mappedBy = "genre")
 	private List<Game> games = new ArrayList<>();
 
-	public Genero() {}
+	public Genre() {}
 
-	public Genero(Long id, String nome) {
+	public Genre(Long id, String name) {
 		super();
 		this.id = id;
-		this.nome = nome;
+		this.name = name;
 	}
 
 	public Long getId() {
@@ -41,14 +40,18 @@ public class Genero implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public List<Game> getGames() {
 		return games;
 	}
@@ -69,7 +72,7 @@ public class Genero implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Genero other = (Genero) obj;
+		Genre other = (Genre) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

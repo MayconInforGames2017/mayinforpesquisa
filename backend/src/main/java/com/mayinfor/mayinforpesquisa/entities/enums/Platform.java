@@ -1,6 +1,6 @@
 package com.mayinfor.mayinforpesquisa.entities.enums;
 
-public enum Plataforma {
+public enum Platform {
 
 	PC, PLAYSTATION, XBOX;
 
